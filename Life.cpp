@@ -81,7 +81,7 @@ vector<vector<int>> next_state(vector<vector<int>> previous_state) {
 				next_state[i][j] = 0;
 			}
 			else if (1 < sum_alive(previous_state, i, j) and sum_alive(previous_state, i, j) < 4 and previous_state[i][j] == 1) {
-				next_state[i][j] =1;
+				next_state[i][j] = 1;
 			}
 			else if (3 < sum_alive(previous_state, i, j) and previous_state[i][j] == 1) {
 				next_state[i][j] = 0;
@@ -125,7 +125,8 @@ vector<vector<int>> read_state(string file) {
 		}
 	return read_state;
 	}
-vector<vector<int>> board;
+vector<vector<int>> board1;
+vector<vector<int>> board2;
 int main()
 {
 	try {
@@ -137,18 +138,19 @@ int main()
 			cout << "Whats the path to the file (with extension)?" << endl;
 			getchar(); // for /n char
 			getline(cin, filepath);
-			board=read_state(filepath);
+			board1=read_state(filepath);
 		}
 		else {
 			cout << "Width for random pattern :", cin >> width, cout << endl;
 			cout << "Height for random pattern :", cin >> height, cout << endl;
-			board = random_state(height, width);
+			board1 = random_state(height, width);
 		}
-		render(board);
+		render(board1);
 		while (true) {
 			system("cls");
-			board = next_state(board);
-			render(board);
+			board2 = next_state(board1);
+			render(board2);
+			board1 = board2;
 			Sleep(50); // Increase if stuttering
 
 		}
