@@ -96,7 +96,7 @@ vector<vector<int>> next_state(vector<vector<int>> &previous_state) {
 	}
 	return next_state;
 }
-vector<vector<int>> read_state(string file) {
+vector<vector<int>> read_state(string &file) {
 	vector<vector<int>> read_state;
 	string line;
 	ifstream data(file);
@@ -125,10 +125,11 @@ vector<vector<int>> read_state(string file) {
 		}
 	return read_state;
 	}
-vector<vector<int>> board1;
-vector<vector<int>> board2;
+
 int main()
 {
+	vector<vector<int>> board1;
+	vector<vector<int>> board2;
 	try {
 		int width, height, choice;
 		string filepath;
