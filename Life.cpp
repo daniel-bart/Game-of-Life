@@ -29,7 +29,7 @@ vector<vector<int>> random_state(int y, int x) {
 	}
 	return random;
 }
-void render(vector<vector<int>> state) {
+void render(vector<vector<int>> &state) {
 	for (int i = 0; i < state.size(); i++) {
 		for (int j = 0; j < state[0].size(); j++) {
 			if (state[i][j] == 1) {
@@ -42,7 +42,7 @@ void render(vector<vector<int>> state) {
 		cout << endl;
 	}
 }
-int sum_alive(vector<vector<int>> state, int y, int x) {
+int sum_alive(vector<vector<int>> &state, int y, int x) {
 	int sum;
 	if (x == 0 and y == 0) {
 		sum = state[y][x + 1] + state[y + 1][x] + state[y + 1][x + 1];
@@ -73,7 +73,7 @@ int sum_alive(vector<vector<int>> state, int y, int x) {
 	}
 	return sum;
 }
-vector<vector<int>> next_state(vector<vector<int>> previous_state) {
+vector<vector<int>> next_state(vector<vector<int>> &previous_state) {
 	vector<vector<int>> next_state = dead_state(previous_state.size(), previous_state[0].size());
 	for (int i = 0; i < previous_state.size(); i++) {
 		for (int j = 0; j < previous_state[0].size(); j++) {
